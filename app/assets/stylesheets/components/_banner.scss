@@ -23,6 +23,11 @@
     text-align: center;
 }
 
+.card {
+  padding: 25px 25px 25px 25px;
+  box-shadow: 0px 0px 10px rgb(100,100,100);
+}
+
 #hire-btn {
   background-color: #A06CD5;
   border-color: #A06CD5;
@@ -33,6 +38,10 @@
   border-color: #6247AA;
 }
 
+#hire-card:hover {
+  box-shadow: 0px 0px 15px #6247AA;
+  transform: translateY(-30px);
+}
 
 #become-btn {
   background-color: #75d56c;
@@ -44,6 +53,11 @@
   border-color: #4daa47;
 }
 
+#become-card:hover {
+  box-shadow: 0px 0px 15px #4daa47;
+  transform: translateY(-30px);
+}
+
 .banner img {
   display: block;
   margin-left: auto;
@@ -52,8 +66,4 @@
   margin-bottom : 10px;
   width: 40%;
   max-height: 115px;
-}
-
-.card {
-  padding: 25px 25px 25px 25px;
 }
