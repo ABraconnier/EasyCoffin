@@ -1,0 +1,24 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+}
+
+.home_video {
+ width: 100vw;
+ height: 100vh;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ object-fit: cover;
+ top: 0;
+ z-index: -2;
+}
+
+.banner h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    margin-top: 250px;
+    text-align: center;
+}
