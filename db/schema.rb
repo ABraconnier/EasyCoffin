@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_142021) do
+ActiveRecord::Schema.define(version: 2019_11_04_195457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,4 +36,18 @@ ActiveRecord::Schema.define(version: 2019_11_04_142021) do
     t.index ["reset_password_token"], name: "index_mourners_on_reset_password_token", unique: true
   end
 
+  create_table "prestations", force: :cascade do |t|
+    t.text "review"
+    t.string "location"
+    t.date "date"
+    t.integer "price"
+    t.bigint "mourner_id"
+    t.integer "status"
+    t.integer "intensity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mourner_id"], name: "index_prestations_on_mourner_id"
+  end
+
+  add_foreign_key "prestations", "mourners"
 end
