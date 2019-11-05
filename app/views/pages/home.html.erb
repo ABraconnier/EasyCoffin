@@ -6,14 +6,14 @@
           <div class="card" id="client-card" data-aos="fade-up-right" data-aos-duration="4000">
             <%= image_tag "client.svg", class: "card-images" %>
             <p>Need someone for a funeral ceremony ?</p>
-            <button type="button" class="btn btn-secondary btn-lg" id="client-btn">Hire a professional mourner !</button>
+            <%= link_to 'Hire a professional mourner!', new_client_registration_path, class: "btn btn-secondary btn-lg", id: "hire-btn" %>
           </div>
         </div>
         <div class="col-6 text-center mt-5">
           <div class="card" id="mourner-card" data-aos="fade-up-left" data-aos-duration="4000">
             <%= image_tag "mourner.svg", class: "card-images" %>
             <p>Need to earn some money ?</p>
-            <button type="button" class="btn btn-secondary btn-lg" id="mourner-btn">Become a professional mourner !</button>
+            <%= link_to 'Become a professional mourner !', new_mourner_registration_path, class: "btn btn-secondary btn lg", id: "become-btn" %>
           </div>
         </div>
       </div>

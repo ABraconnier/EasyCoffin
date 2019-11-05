@@ -17,14 +17,29 @@
   </head>
   <body>
   <nav class="navbar navbar-light bg-light d-flex justify-content-between">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <%= image_tag 'EASYCOFFIN_logo1.png' %>
     </a>
-    <form class="form-inline">
-      <a class="btn btn-outline-primary" href="/login" role="button">
-      Login
-      </a>
-    </form>
+
+    <% if !user_signed_in? %>
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Log In
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="/clients/sign_in">As a client</a>
+          <a class="dropdown-item" href="/mourners/sign_in">As a mourner</a>
+        </div>
+      </div>
+
+    <% else %>
+
+        <% if mourner_signed_in?  %>
+          <%= link_to "log out", destroy_mourner_session_path, method: :delete, class: "btn btn-secondary" %>
+        <% elsif client_signed_in? %>
+          <%= link_to "log out", destroy_client_session_path, method: :delete, class: "btn btn-secondary" %>
+        <% end %>
+    <% end %>
   </nav>
     <%= yield %>
     <p class="notice"><%= notice %></p>

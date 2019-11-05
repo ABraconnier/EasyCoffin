@@ -1,2 +1,30 @@
-<h1>Mourners#edit</h1>
-<p>Find me in app/views/mourners/edit.html.erb</p>
+<h1>THIS IS THE DASHBOARD MOURNER</h1>
+
+
+<p>This is your personnal information you can update.</p>
+<%= simple_form_for @mourner do |f| %>
+<ul>
+<li>
+<%= @mourner.first_name  %> Update: <%= f.input :first_name %>
+</li>
+<li>
+<%= @mourner.last_name  %> Update: <%= f.input :last_name %>
+</li>
+<li>
+<%= @mourner.age  %> Update: <%= f.input :age %>
+</li>
+<li>
+<%= @mourner.account_number  %> Update: <%= f.input :account_number %>
+</li>
+<li>
+<%= @mourner.years_of_expertise  %> Update: <%= f.input :years_of_expertise %>
+</li>
+<li>
+<%= @mourner.mourning_intensity  %> Update: <%= f.input :mourning_intensity %>
+</li>
+<li>
+<%= @mourner.price_range  %> Update: <%= f.input :price_range %>
+</li>
+</ul>
+  <%= f.button :submit %>
+<% end %>
