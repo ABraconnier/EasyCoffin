@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: :mourner, url: registration_path(:mourner)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -14,24 +14,13 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
-
-                required: true,
-                input_html: { autocomplete: "first-name" } %>
-    <%= f.input :last_name,
-                required: true,
-                input_html: { autocomplete: "last-name" } %>
-    <%= f.input :age,
-                required: true,
-                input_html: { autocomplete: "age" } %>
-    <%= f.input :years_of_expertise,
-                required: false %>
-    <%= f.input :mourning_intensity,
-                required: false %>
-    <%= f.input :price_range,
-                required: true %>
-  <%= f.input :account_number,
-                required: true %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :age %>
+    <%= f.input :years_of_expertise %>
+    <%= f.input :mourning_intensity %>
+    <%= f.input :price_range %>
+  <%= f.input :account_number %>
 </div>
 
   <div class="form-actions">

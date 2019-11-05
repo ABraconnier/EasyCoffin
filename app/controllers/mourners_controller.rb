@@ -11,16 +11,12 @@ class MournersController < ApplicationController
   end
 
   def edit
+    @mourner = Mourner.find(params[:id])
   end
 
   def update
-  end
-
-  private
-
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range])
+    @mourner = Mourner.find(params[:id])
+    @mourner.update(mourners_params)
   end
 
   def mourners_params
