@@ -8,7 +8,6 @@ class MournersController < ApplicationController
   end
 
   def show
-    @mourner.find(params[:id])
   end
 
   def edit

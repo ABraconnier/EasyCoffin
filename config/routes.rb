@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   devise_for :mourners, path: 'mourners'
   resources :mourners
   root to: 'pages#home'
-  # Routes for mourners:
-  #
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

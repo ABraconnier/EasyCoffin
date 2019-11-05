@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_client!
   skip_before_action :authenticate_client!, only: [:edit, :update]
+
   def index
   end
 

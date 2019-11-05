@@ -6,6 +6,7 @@
           <div class="card" id="hire-card" data-aos="fade-up-right" data-aos-duration="4000">
             <%= image_tag "hire.svg", class: "card-images" %>
             <p>Need someone for a funeral ceremony ?</p>
+            <%= link_to "Hire a professional mourner !", new_client_registration_path, class: "btn btn-secondary btn lg", id: "hire-btn" %>
             <%= link_to 'Hire a professional mourner!', new_client_registration_path, class: "btn btn-secondary btn-lg", id: "hire-btn" %>
           </div>
         </div>
@@ -13,7 +14,7 @@
           <div class="card" id="become-card" data-aos="fade-up-left" data-aos-duration="4000">
             <%= image_tag "become.svg", class: "card-images" %>
             <p>Need to earn some money ?</p>
-            <button type="button" class="btn btn-secondary btn-lg" id="become-btn">Become a professional mourner !</button>
+            <%= link_to "Become a professional mourner !", new_mourner_registration_path, class: "btn btn-secondary btn lg", id: "become-btn" %>
           </div>
         </div>
       </div>
