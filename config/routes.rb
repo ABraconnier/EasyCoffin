@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  get 'clients/index'
+  get 'clients/show'
+  get 'clients/new'
+  get 'clients/create'
+  get 'clients/edit:id', to: "clients#edit"
+  get 'clients/update:id', to: "clients#update"
+  get 'clients/destroy'
+  devise_for :clients
+
   get 'mourners/index'
   get 'mourners/show'
   get 'mourners/new'
