@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+
+.card {
+  padding: 25px 25px 25px 25px;
+  box-shadow: 0px 0px 10px rgb(100,100,100);
+}
+
+#hire-btn {
+  background-color: #A06CD5;
+  border-color: #A06CD5;
+}
+
+#hire-btn:hover {
+  background-color: #6247AA;
+  border-color: #6247AA;
+}
+
+#hire-card:hover {
+  box-shadow: 0px 0px 15px #6247AA;
+  transform: translateY(-30px);
+}
+
+#become-btn {
+  background-color: #75d56c;
+  border-color: #75d56c;
+}
+
+#become-btn:hover {
+  background-color: #4daa47;
+  border-color: #4daa47;
+}
+
+#become-card:hover {
+  box-shadow: 0px 0px 15px #4daa47;
+  transform: translateY(-30px);
+}
+
+.card-images {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top : 15px;
+  margin-bottom : 10px;
+  width: 40%;
+  max-height: 115px;
+}
+
+.card-row-home {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+#h1-banner {
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin-top: 150px;
+  text-align: center;
+}
