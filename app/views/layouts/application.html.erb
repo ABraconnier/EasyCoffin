@@ -15,29 +15,25 @@
     <a class="navbar-brand" href="/">
       <%= image_tag 'EASYCOFFIN_logo1.png' %>
     </a>
-    <% if current_mourner || current_client %>
+
+    <% if !user_signed_in? %>
       <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Log In
         </a>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="/clients/sign_in">As a client</a>
           <a class="dropdown-item" href="/mourners/sign_in">As a mourner</a>
-          <%= link_to "sign-up", new_client_registration_path %>
         </div>
       </div>
-    <% else %>
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Log Out
-        </a>
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="/clients/sign_out">As a client</a>
-          <a class="dropdown-item" href="/mourners/sign_out">As a mourner</a>
-        </div>
-      </div>
+    <% else %>
+
+        <% if mourner_signed_in?  %>
+          <%= link_to "log out", destroy_mourner_session_path, method: :delete, class: "btn btn-secondary" %>
+        <% elsif client_signed_in? %>
+          <%= link_to "log out", destroy_client_session_path, method: :delete, class: "btn btn-secondary" %>
+        <% end %>
     <% end %>
   </nav>
     <%= yield %>
