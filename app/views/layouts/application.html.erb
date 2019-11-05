@@ -15,7 +15,7 @@
     <a class="navbar-brand" href="/">
       <%= image_tag 'EASYCOFFIN_logo1.png' %>
     </a>
-    <%-# if current_mourner || current_client -%>
+    <% if current_mourner || current_client %>
       <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Log In
@@ -27,8 +27,8 @@
           <%= link_to "sign-up", new_client_registration_path %>
         </div>
       </div>
-    <% #else %>
-<!--       <div class="dropdown show">
+    <% else %>
+      <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Log Out
         </a>
@@ -37,8 +37,8 @@
           <a class="dropdown-item" href="/clients/sign_out">As a client</a>
           <a class="dropdown-item" href="/mourners/sign_out">As a mourner</a>
         </div>
-      </div> -->
-    <% #end %>
+      </div>
+    <% end %>
   </nav>
     <%= yield %>
     <p class="notice"><%= notice %></p>

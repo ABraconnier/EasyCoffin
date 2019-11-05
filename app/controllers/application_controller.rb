@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     if current_mourner
       edit_mourner_path(user)
     elsif current_client
-      edit_mourner_path(user)
+      edit_client_path(user)
     end # your path
   end
 end
