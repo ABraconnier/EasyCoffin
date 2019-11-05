@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Mourners::RegistrationsController < Devise::RegistrationsController
-    before_action :configure_permitted_parameters
+class Clients::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,6 +59,6 @@ class Mourners::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range, :profile_picture])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :location, :profile_picture, :account_number])
   end
 end

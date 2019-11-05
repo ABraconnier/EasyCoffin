@@ -14,13 +14,13 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :age %>
-    <%= f.input :years_of_expertise %>
-    <%= f.input :mourning_intensity %>
-    <%= f.input :price_range %>
-  <%= f.input :account_number %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :age %>
+    <%= f.text_field :years_of_expertise %>
+    <%= f.text_field :mourning_intensity %>
+    <%= f.text_field :price_range %>
+  <%= f.text_field :account_number %>
 </div>
 
   <div class="form-actions">
