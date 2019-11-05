@@ -1,1 +1,21 @@
 <h1>THIS IS THE DASHBOARD CLIENT</h1>
+
+
+<p>This is your personnal information you can update.</p>
+<%= simple_form_for @client do |f| %>
+<ul>
+<li>
+<%= @client.first_name  %> Update: <%= f.input :first_name %>
+</li>
+<li>
+<%= @client.last_name  %> Update: <%= f.input :last_name %>
+</li>
+<li>
+<%= @client.location  %> Update: <%= f.input :location %>
+</li>
+<li>
+<%= @client.account_number  %> Update: <%= f.input :account_number %>
+</li>
+</ul>
+  <%= f.button :submit %>
+<% end %>

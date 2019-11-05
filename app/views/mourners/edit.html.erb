@@ -5,22 +5,25 @@
 <%= simple_form_for @mourner do |f| %>
 <ul>
 <li>
-<% @mourner.first_name  %> Update: <%= f.input :first_name %>
+<%= @mourner.first_name  %> Update: <%= f.input :first_name %>
 </li>
 <li>
-<% @mourner.age  %> Update: <%= f.input :age %>
+<%= @mourner.last_name  %> Update: <%= f.input :last_name %>
 </li>
 <li>
-<% @mourner.account_number  %> Update: <%= f.input :account_number %>
+<%= @mourner.age  %> Update: <%= f.input :age %>
 </li>
 <li>
-<% @mourner.years_of_expertise  %> Update: <%= f.input :years_of_expertise %>
+<%= @mourner.account_number  %> Update: <%= f.input :account_number %>
 </li>
 <li>
-<% @mourner.mourning_intensity  %> Update: <%= f.input :mourning_intensity %>
+<%= @mourner.years_of_expertise  %> Update: <%= f.input :years_of_expertise %>
 </li>
 <li>
-<% @mourner.price_range  %> Update: <%= f.input :price_range %>
+<%= @mourner.mourning_intensity  %> Update: <%= f.input :mourning_intensity %>
+</li>
+<li>
+<%= @mourner.price_range  %> Update: <%= f.input :price_range %>
 </li>
 </ul>
   <%= f.button :submit %>

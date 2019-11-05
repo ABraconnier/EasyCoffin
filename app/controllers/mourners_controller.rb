@@ -17,7 +17,10 @@ class MournersController < ApplicationController
   def update
     @mourner = Mourner.find(params[:id])
     @mourner.update(mourners_params)
+    redirect_to edit_mourner_path(@mourner)
   end
+
+  private
 
   def mourners_params
     params.require(:mourner).permit(:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range)

@@ -10,14 +10,18 @@ class ClientsController < ApplicationController
   end
 
   def edit
+    @client = Client.find(params[:id])
   end
 
   def update
+    @client = Client.find(params[:id])
+    @client.update(client_params)
+    redirect_to edit_client_path(@client)
   end
 
   private
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :location, :profile_picture, :account_number])
+  def client_params
+    params.require(:client).permit(:first_name, :last_name, :account_number, :location, :profile_picture)
   end
 end
