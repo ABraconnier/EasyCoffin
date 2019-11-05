@@ -1,35 +1,76 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: :client, url: registration_path(:client)) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
-                required: true %>
-    <%= f.input :last_name,
-                required: true %>
-    <%= f.input :location,
-                required: true %>
-    <%= f.input :account_number,
-                required: true %>
-    <%= f.input :profile_picture,
-                required: false %>
-      </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+<div class="banner-home-client">
+  <div class="container">
+    <div class="row mb-5">
+      <h1 id="h1-banner">Never be alone again when you lose a beloved one</h1>
+      <a href="#signup"><button type="button" class="btn btn-secondary btn-lg mt-4" id="client-btn" >Hire a profesional mourner !</button></a>
+    </div>
   </div>
-<% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mt-20" style="margin-top: -250px">
+      <h2 id="h2-banner">Your advantages with Easy Coffin</h2>
+    </div>
+    <div class="col-6 mt-20" style="margin-top: -325px">
+      <div class="row">
+        <div class="col-6">
+          <div class="card text-center" id="card-home">
+            <i class="fas fa-user-clock mb-2" style="color: #A06CD5; font-size: 20px"></i>
+            <p id="text-card-home">Don't waste time finding mourners anymore</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card" id="card-home">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="card" id="card-home">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card" id="card-home">
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="container mt-4" id="signup">
+  <div class="row mt-10">
+    <div class="col-6 offset-3 mt-10">
+      <div class="card mt-5">
+      <h2 class="mt-2">Sign up</h2>
+      <%= simple_form_for(resource, as: :client, url: registration_path(:client)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :first_name,
+                      required: true %>
+          <%= f.input :last_name,
+                      required: true %>
+          <%= f.input :location,
+                      required: true %>
+          <%= f.input :account_number,
+                      required: true %>
+          <%= f.input :profile_picture,
+                      required: false %>
+        </div>
 
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Sign up", class: "btn btn-secondary btn-lg", id: "client-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= render "clients/shared/links" %>
