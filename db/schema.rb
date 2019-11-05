@@ -12,10 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_11_04_195457) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,5 +65,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_195457) do
     t.datetime "updated_at", null: false
     t.index ["mourner_id"], name: "index_prestations_on_mourner_id"
   end
+
   add_foreign_key "prestations", "mourners"
 end
