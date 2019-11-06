@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Prestation.create!(review: 1, location: "brussels", price: 3, client: client, mourner: mourner)
+
+
 10.times do
   Mourner.create!(
     email: Faker::Internet.email,
@@ -19,3 +23,4 @@
     price_range: (20..55).to_a.sample
     )
 end
+
