@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'cloudinary', '~> 1.9.1'
 gem 'bootsnap', require: false
 gem 'faker'
 gem 'jbuilder', '~> 2.0'
@@ -27,7 +28,8 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
 end
 
+gem 'carrierwave', '~> 1.2'
 gem 'devise'
+gem 'dotenv-rails', groups: [:development, :test]
