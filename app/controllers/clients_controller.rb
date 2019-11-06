@@ -11,10 +11,14 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
+    if current_client == @client
+      authorize @client
+    end
   end
 
   def update
     @client = Client.find(params[:id])
+    authorize @client
     @client.update(client_params)
     redirect_to edit_client_path(@client)
   end
@@ -23,5 +27,9 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:first_name, :last_name, :account_number, :location, :profile_picture)
+  end
+
+  def pundit_user
+    current_client
   end
 end
