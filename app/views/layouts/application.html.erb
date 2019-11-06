@@ -34,8 +34,10 @@
     <% else %>
 
         <% if mourner_signed_in?  %>
+          <%= link_to "My Mourner Dashboard", edit_mourner_path(current_mourner), class: "btn btn-secondary", id:"mourner-btn" %>
           <%= link_to "Log out", destroy_mourner_session_path, method: :delete, class: "btn btn-secondary", style: "background-color: black" %>
         <% elsif client_signed_in? %>
+          <%= link_to "My Client Dashboard", edit_client_path(current_client), class: "btn btn-secondary", id:"client-btn" %>
           <%= link_to "Log out", destroy_client_session_path, method: :delete, class: "btn btn-secondary", style: "background-color: black" %>
         <% end %>
     <% end %>
