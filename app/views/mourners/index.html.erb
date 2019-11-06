@@ -8,6 +8,7 @@
 <div class="card">
   <p><%= mourner.first_name %></p>
   <p><%= mourner.last_name %></p>
+  <%= cl_image_tag mourner.photo %>
   <p><%= link_to "see profile", mourner_path(mourner)%></p>
 </div>
 <% end %>
