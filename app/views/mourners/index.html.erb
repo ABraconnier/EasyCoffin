@@ -1,3 +1,13 @@
-<h1>Mourners#index</h1>
+<h1>Here are the best mourners ever !</h1>
+<br>
 <p>Find me in app/views/mourners/index.html.erb</p>
-<%= link_to "Destroy",  destroy_mourner_session_path, method: :delete %>
+
+<br>
+<br>
+<% @mourners.each do |mourner|%>
+<div class="card">
+  <p><%= mourner.first_name %></p>
+  <p><%= mourner.last_name %></p>
+  <p><%= link_to "see profile", mourner_path(mourner)%></p>
+</div>
+<% end %>

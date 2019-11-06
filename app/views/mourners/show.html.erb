@@ -1,2 +1,35 @@
 <h1>Mourners#show</h1>
 <p>Find me in app/views/mourners/show.html.erb</p>
+<div class="card">
+<%= @mourner.first_name %>
+<%= @mourner.last_name %>
+<strong>we will add picture and more info about mourner afterwards</strong>
+</div>
+
+<br>
+<br>
+<br>
+Wanna order a prestation with <%= @mourner.first_name %> ? Fill in the form below:
+<%= simple_form_for @prestation do |f| %>
+<ul>
+<li>
+<%= @prestation.status  %> Update: <%= f.input :status %>
+</li>
+<li>
+<%= @prestation.intensity  %> Update: <%= f.input :intensity %>
+</li>
+<li>
+<%= @prestation.location  %> Update: <%= f.input :location %>
+</li>
+<li>
+<%= @prestation.date  %> Update: <%= f.input :date %>
+</li>
+</ul>
+  <%= f.button :submit %>
+<% end %>
+
+</div>
+<br>
+<br>
+<br>
+  <%= link_to "Back to mourners list", mourners_path %>

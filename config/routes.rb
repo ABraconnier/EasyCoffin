@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post 'prestations', to: "prestations#create"
   devise_for :clients, path: 'clients', controllers: { registrations: "clients/registrations" }
   resources :clients, only: [:edit, :update]
 

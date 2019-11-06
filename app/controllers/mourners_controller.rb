@@ -10,6 +10,7 @@ class MournersController < ApplicationController
 
   def show
     @mourner = Mourner.find(params[:id])
+    @prestation = Prestation.new
     authorize @mourner if current_client
   end
 
