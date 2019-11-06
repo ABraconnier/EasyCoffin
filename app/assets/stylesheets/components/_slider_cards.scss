@@ -1,0 +1,30 @@
+.slider_card {
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0px 0px 10px #646464;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border-radius: 2px;
+}
+
+.slider_header {
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-style: italic;
+}
+
+.slider_text {
+  color: black;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0 1rem 1rem 1rem;
+}
+
