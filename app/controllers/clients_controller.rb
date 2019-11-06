@@ -3,22 +3,14 @@ class ClientsController < ApplicationController
   before_action :authenticate_client!
   skip_before_action :authenticate_client!, only: [:edit, :update]
 
-  def index
-  end
-
-  def show
-  end
-
   def edit
     @client = Client.find(params[:id])
-    if current_client == @client
-      authorize @client
-    end
+    authorize @client if pundit_user == @client
   end
 
   def update
     @client = Client.find(params[:id])
-    authorize @client
+    authorize @client if pundit_user == @client
     @client.update(client_params)
     redirect_to edit_client_path(@client)
   end
