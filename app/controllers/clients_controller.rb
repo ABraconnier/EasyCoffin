@@ -5,7 +5,8 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
-    authorize @client if pundit_user == @client
+    authorize @client
+    @prestations = @client.prestations
   end
 
   def update

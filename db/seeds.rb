@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning'
+Client.destroy_all
+Mourner.destroy_all
+Prestation.destroy_all
+
+p "seeding"
+client = Client.create!(first_name: "Antoine", email: "a@le.com", password: "aoieur")
+mourner = Mourner.create!(first_name: "Aline", email: "a@le.com", password: "aoieur")
+Prestation.create!(review: 1, location: "brussels", price: 3, client: client, mourner: mourner)
+
+p "My seed has been successful"
