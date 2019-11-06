@@ -33,6 +33,6 @@ class MournersController < ApplicationController
   end
 
   def mourners_params
-    params.require(:mourner).permit(:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range)
+    params.require(:mourner).permit(:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range, :photo)
   end
 end
