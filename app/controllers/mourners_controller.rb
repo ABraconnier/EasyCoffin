@@ -5,6 +5,7 @@ class MournersController < ApplicationController
 
   def index
     @mourners = policy_scope(Mourner).order(created_at: :desc)
+    authorize @mourners
   end
 
   def show
@@ -27,7 +28,7 @@ class MournersController < ApplicationController
   private
 
   def pundit_user
-    current_mourner
+    current_mourner || current_client
   end
 
   def mourners_params

@@ -22,6 +22,6 @@ class ClientsController < ApplicationController
   end
 
   def pundit_user
-    current_client
+    current_client || current_mourner
   end
 end
