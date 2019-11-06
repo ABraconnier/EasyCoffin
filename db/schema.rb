@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_195457) do
+ActiveRecord::Schema.define(version: 2019_11_06_135247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,8 +63,11 @@ ActiveRecord::Schema.define(version: 2019_11_04_195457) do
     t.integer "intensity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_prestations_on_client_id"
     t.index ["mourner_id"], name: "index_prestations_on_mourner_id"
   end
 
+  add_foreign_key "prestations", "clients"
   add_foreign_key "prestations", "mourners"
 end

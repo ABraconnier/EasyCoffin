@@ -12,4 +12,8 @@ class MournerPolicy < ApplicationPolicy
   def show?
     return true
   end
+
+  def index?
+    return true
+  end
 end

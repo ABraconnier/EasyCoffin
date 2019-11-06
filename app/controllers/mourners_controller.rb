@@ -5,7 +5,7 @@ class MournersController < ApplicationController
 
   def index
     @mourners = policy_scope(Mourner).order(created_at: :desc)
-    authorize @mourners
+    authorize @mourners if current_client
   end
 
   def show

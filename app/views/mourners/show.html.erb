@@ -10,22 +10,12 @@
 <br>
 <br>
 Wanna order a prestation with <%= @mourner.first_name %> ? Fill in the form below:
-<%= simple_form_for @prestation do |f| %>
-<ul>
-<li>
-<%= @prestation.status  %> Update: <%= f.input :status %>
-</li>
-<li>
-<%= @prestation.intensity  %> Update: <%= f.input :intensity %>
-</li>
-<li>
-<%= @prestation.location  %> Update: <%= f.input :location %>
-</li>
-<li>
-<%= @prestation.date  %> Update: <%= f.input :date %>
-</li>
-</ul>
-  <%= f.button :submit %>
+<%= simple_form_for [@mourner, @prestation] do |f| %>
+<%= f.input :status %>
+<%= f.input :intensity %>
+<%= f.input :location %>
+<%= f.input :date %>
+<%= f.button :submit %>
 <% end %>
 
 </div>
