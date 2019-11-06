@@ -1,4 +1,4 @@
 class Prestation < ApplicationRecord
-  belongs_to :mourner
   belongs_to :client
+  belongs_to :mourner
 end
