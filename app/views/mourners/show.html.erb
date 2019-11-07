@@ -11,12 +11,10 @@
 <br>
 Wanna order a prestation with <strong><%= @mourner.first_name %></strong> ? Fill in the form below:
 <%= simple_form_for [@mourner, @prestation] do |f| %>
-<%= f.input :date %>
-<%= f.input :location %>
-<%= f.input :intensity %>
+<%= f.input :date, required: true%>
+<%= f.input :location, required: true %>
 <%= f.button :submit %>
 <% end %>
-
 </div>
 <br>
 <br>
