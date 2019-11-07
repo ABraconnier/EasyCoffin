@@ -8,4 +8,8 @@ class PrestationPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def index?
+    return true
+  end
 end

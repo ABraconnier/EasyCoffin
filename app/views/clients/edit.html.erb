@@ -20,4 +20,12 @@
   <%= f.button :submit %>
 <% end %>
 
+<% @prestations.each do |prestation| %>
+  <p>'you should see some prestations here'</p>
+  <div class = "prestations">
+  <%= prestation.id %>
+  </div>
+<% end %>
+
 <%= link_to "See the available mourners", mourners_path %>
+

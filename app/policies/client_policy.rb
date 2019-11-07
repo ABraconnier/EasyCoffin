@@ -5,7 +5,11 @@ class ClientPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    update?
+  end
+
   def update?
-    return true
+    user == record
   end
 end
