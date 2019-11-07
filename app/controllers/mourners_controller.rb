@@ -5,7 +5,9 @@ class MournersController < ApplicationController
 
   def index
     if params[:location].present? || params[:price].present?
-      @mourners = policy_scope(Mourner.search_by_price_and_location(params[:location] + ' ' + params[:price])).order(created_at: :desc)
+      mourners_location = policy_scope(Mourner).search_by_location(params[:location]).order(created_at: :desc)
+      mourners_price = policy_scope(Mourner).search_by_price(params[:price]).order(created_at: :desc)
+      @mourners = mourners_location + mourners_price
     else
       @mourners = policy_scope(Mourner).order(created_at: :desc)
     end
