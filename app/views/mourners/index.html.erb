@@ -1,9 +1,19 @@
 <h1>Here are the best mourners ever !</h1>
-<br>
-<p>Find me in app/views/mourners/index.html.erb</p>
 
-<br>
-<br>
+<%= form_tag mourners_path, method: :get do %>
+  <%= label_tag(:location, "Location:") %>
+  <%= text_field_tag :location,
+    params[:location],
+    class: "form-control"
+  %>
+  <%= label_tag(:price, "Maximum price:") %>
+    <%= number_field_tag :price,
+    params[:price],
+    class: "form-control"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <% @mourners.each do |mourner|%>
 <div class="card">
   <p><%= mourner.first_name %></p>

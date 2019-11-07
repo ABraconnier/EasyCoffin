@@ -6,6 +6,7 @@ gem 'bootsnap', require: false
 gem 'faker'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
+gem 'pg_search', '~> 2.3.0'
 gem 'puma'
 gem 'pundit'
 gem 'rails', '5.2.3'
