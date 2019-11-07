@@ -1,24 +1,44 @@
-<h1>Here are the best mourners ever !</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="row justify-content-center">
+      <h1>Here are the best mourners ever !</h1>
+      </div>
 
-<%= form_tag mourners_path, method: :get do %>
-  <%= label_tag(:location, "Location:") %>
-  <%= text_field_tag :location,
-    params[:location],
-    class: "form-control"
-  %>
-  <%= label_tag(:price, "Maximum price:") %>
-    <%= number_field_tag :price,
-    params[:price],
-    class: "form-control"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+      <div class="active-purple-4 mb-4">
+      <%= form_tag mourners_path, method: :get do %>
+        <%= label_tag(:location, "Location:") %>
+        <%= text_field_tag :location,
+          params[:location],
+          class: "form-control"
+        %>
+      </div>
 
-<% @mourners.each do |mourner|%>
-<div class="card">
-  <p><%= mourner.first_name %></p>
-  <p><%= mourner.last_name %></p>
-  <%= cl_image_tag mourner.photo %>
-  <p><%= link_to "see profile", mourner_path(mourner)%></p>
+      <div class="active-purple-4 mb-4">
+        <%= label_tag(:price, "Maximum price:") %>
+          <%= number_field_tag :price,
+          params[:price],
+          class: "form-control"
+        %>
+      </div>
+
+        <%= submit_tag "Search", class: "btn btn-secondary btn-lg", id: "client-btn" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
+
+<div class="container">
+  <div class="test666">
+    <% @mourners.each do |mourner|%>
+      <div class="card-product row">
+        <%= cl_image_tag mourner.photo %>
+        <div class="card-product-infos">
+          <p><strong><%= mourner.first_name %></strong></p>
+          <p><strong><%= mourner.last_name %></strong></p>
+          <p><%= link_to "see profile", mourner_path(mourner)%></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
