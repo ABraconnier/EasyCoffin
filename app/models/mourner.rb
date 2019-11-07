@@ -11,12 +11,12 @@ class Mourner < ApplicationRecord
   pg_search_scope :search_by_price,
     against: [:price_range],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: false, any_word: true } # <-- now `superman batm` will return something!
     }
   pg_search_scope :search_by_location,
     against: [:location],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: false, any_word: true } # <-- now `superman batm` will return something!
     }
   mount_uploader :photo, PhotoUploader
 end
