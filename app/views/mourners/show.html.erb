@@ -1,20 +1,19 @@
 <h1>Mourners#show</h1>
 <p>Find me in app/views/mourners/show.html.erb</p>
 <div class="card">
-<%= @mourner.first_name %>
-<%= @mourner.last_name %>
-<strong>we will add picture and more info about mourner afterwards</strong>
+<strong><%= @mourner.first_name %>
+<%= @mourner.last_name %></strong>
+<%= cl_image_tag @mourner.photo %>
 </div>
 
 <br>
 <br>
 <br>
-Wanna order a prestation with <%= @mourner.first_name %> ? Fill in the form below:
+Wanna order a prestation with <strong><%= @mourner.first_name %></strong> ? Fill in the form below:
 <%= simple_form_for [@mourner, @prestation] do |f| %>
-<%= f.input :status %>
-<%= f.input :intensity %>
-<%= f.input :location %>
 <%= f.input :date %>
+<%= f.input :location %>
+<%= f.input :intensity %>
 <%= f.button :submit %>
 <% end %>
 

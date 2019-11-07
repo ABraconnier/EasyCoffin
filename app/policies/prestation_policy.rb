@@ -12,4 +12,8 @@ class PrestationPolicy < ApplicationPolicy
   def index?
     return true
   end
+
+  def destroy?
+    record.client == user
+  end
 end
