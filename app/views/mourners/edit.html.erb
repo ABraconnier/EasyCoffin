@@ -1,63 +1,80 @@
-<h1>My mourner DASHBOARD</h1>
-
-<div>
-<p>My personal informations</p>
-<%= simple_form_for @mourner do |f| %>
-<ul>
-<li>
-<%= @mourner.first_name  %> Update: <%= f.input :first_name %>
-</li>
-<li>
-<%= @mourner.last_name  %> Update: <%= f.input :last_name %>
-</li>
-<li>
-<%= @mourner.age  %> Update: <%= f.input :age %>
-</li>
-<li>
-<%= @mourner.account_number  %> Update: <%= f.input :account_number %>
-</li>
-<li>
-<%= @mourner.years_of_expertise  %> Update: <%= f.input :years_of_expertise %>
-</li>
-<li>
-<%= @mourner.mourning_intensity  %> Update: <%= f.input :mourning_intensity %>
-</li>
-<li>
-<%= @mourner.price_range  %> Update: <%= f.input :price_range %>
-</li>
-</ul>
-  <%= f.button :submit %>
-<% end %>
-</div>
-
-
-<div class="prestations">
-<% @mourner.prestations.each do |prestation| %>
-  <p>Find your prestations coming from clients below</p>
-  <div class = "prestation">
-    <div class="client_info">
-  <%= prestation.client.first_name %>
-  <%= prestation.client.last_name %>
-  <%= prestation.client.email %>
-  <%= prestation.client.location %>
+<div class="container">
+  <h1 class="mt-3 ml-3" id="h2-banner">Your Mourner Dashboard</h1>
+  <div class="row">
+    <div class="col-3 mt-3 card">
+      <div class="text-center">
+        <h2>Your profile</h2>
+        <p>Update your data if needed</p>
+      </div>
+    <%= simple_form_for @mourner do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :location %>
+    <%= f.input :account_number %>
+    <%= f.input :age %>
+    <%= f.input :account_number %>
+    <%= f.input :years_of_expertise %>
+    <%= f.input :mourning_intensity %>
+    <%= f.input :price_range %>
+      <div class="text-center">
+        <%= f.button :submit, "Update profile", class: "btn btn-secondary btn-lg", id: "mourner-btn" %>
+      </div>
+    <% end %>
     </div>
-    <div class="prestation_info">
-  <%= prestation.location %>
-  <%= prestation.date %>
-  <%= prestation.price %>
-  <%= prestation.intensity %>
-    </div>
-    <div class="buttons">
-      <% case prestation.status %>
-      <% when 0 %>
-      <%= "pending" %>
-      <% when 1 %>
-      <%= "done" %>
-      <% when 2 %>
-      <%= "canceled" %>
-      <% end %>
+    <div class="col-9 mt-3">
+      <div class="card-category">
+      <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Reservation History</h1>
+      <div class="card">
+​        <% if current_mourner.prestations.empty? %>
+          <div style="text-align: center">
+          <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
+          <p>No reservation done yet...</p> <strong> Go kill someone!</strong>
+​        <% else %>
+          <div class="prestations">
+          <% @prestations.each do |prestation| %>
+          <p>Find your prestations requests from client(s) below</p>
+            <div class = "prestation">
+              <div class="mourner_info">
+                <%= prestation.mourner.first_name %>
+                <%= prestation.mourner.last_name %>
+                <%= prestation.mourner.email %>
+                <%= prestation.mourner.rating %>
+                <%= prestation.mourner.age %>
+                <%= prestation.mourner.account_number %>
+                <%= prestation.mourner.years_of_expertise %>
+                <%= prestation.mourner.mourning_intensity %>
+                <%= prestation.mourner.price_range %>
+                <%= cl_image_tag prestation.mourner.photo %>
+              </div>
+              <div class="prestation_info">
+                <%= prestation.location %>
+                <%= prestation.date %>
+                <%= prestation.price %>
+                <%= prestation.intensity %>
+                <% case prestation.status %>
+                <% when 0 %>
+                <%= "pending" %>
+                <% when 1 %>
+                <%= "done" %>
+                <% when 2 %>
+                <%= "canceled" %>
+                <% end %>
+              </div>
+              <% if prestation.status == "pending"%>
+                <div class="btn btn-secondary">
+                  <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
+                </div>
+                <div class="btn btn-secondary">
+                  <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "You Sure you want to cry?"} %>
+                </div>
+              <% else %>
+                  You can't cancel the prestation anymore as you accepted it
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<% end %>
-

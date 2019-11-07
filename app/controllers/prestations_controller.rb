@@ -28,6 +28,13 @@ class PrestationsController < ApplicationController
     redirect_to edit_client_path(current_client)
   end
 
+  def update
+    @prestation = Prestation.find(params[:id])
+    authorize @prestation
+    @prestation.update(status: 1)
+    redirect_to edit_mourner_path(current_mourner)
+  end
+
   private
 
   def pundit_user
