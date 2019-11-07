@@ -60,9 +60,16 @@
                 <%= "canceled" %>
                 <% end %>
               </div>
-              <div class="btn btn-secondary">
-                <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
-              </div>
+              <% if prestation.status == "pending"%>
+                <div class="btn btn-secondary">
+                  <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
+                </div>
+                <div class="btn btn-secondary">
+                  <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "You Sure you want to cry?"} %>
+                </div>
+              <% else %>
+                  You can't cancel the prestation anymore as you accepted it
+              <% end %>
             </div>
           <% end %>
           </div>

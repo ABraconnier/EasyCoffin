@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :mourners, path: 'mourners', controllers: { registrations: "mourners/registrations" }
   resources :mourners, only: [:index, :show, :edit, :update] do
-    resources :prestations, only: [:create, :destroy]
+    resources :prestations, only: [:create, :destroy, :update]
   end
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
