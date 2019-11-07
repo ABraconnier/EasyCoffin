@@ -12,6 +12,14 @@ class MournersController < ApplicationController
     @mourners = mourners_price if mourners_price.present?
     @mourners = mourners_location if mourners_location.present?
     authorize @mourners if @mourners != []
+    @mourners_geo = Mourner.geocoded #returns flats with coordinates
+
+    @markers = @mourners.map do |mourner|
+      {
+        lat: mourner.latitude,
+        lng: mourner.longitude
+      }
+    end
   end
 
   def show

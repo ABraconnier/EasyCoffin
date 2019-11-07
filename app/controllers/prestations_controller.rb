@@ -5,6 +5,8 @@ class PrestationsController < ApplicationController
     mourner = Mourner.find(params[:mourner_id])
     @prestation.mourner = mourner
     @prestation.client = current_client
+    @prestation.price = mourner.price_range
+    @prestation.intensity = mourner.mourning_intensity
     authorize @prestation
     @prestation.save
     redirect_to edit_client_path(current_client)
