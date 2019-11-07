@@ -13,10 +13,14 @@ class PrestationsController < ApplicationController
   def show
   end
 
+  def update
+    @prestation = Prestation.find(params[:id])
+    authorize @prestation
+  end
+
   def destroy
     @prestation = Prestation.find(params[:id])
     mourner = Mourner.find(params[:mourner_id])
-    client = current_client
     @prestation.mourner = mourner
     @prestation.client = current_client
     authorize @prestation

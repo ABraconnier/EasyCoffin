@@ -13,6 +13,10 @@ class PrestationPolicy < ApplicationPolicy
     return true
   end
 
+  def update?
+    record.mourner == user
+  end
+
   def destroy?
     record.client == user
   end
