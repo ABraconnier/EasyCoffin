@@ -13,7 +13,7 @@ Prestation.create!(review: 1, location: "brussels", price: 3, client: client, mo
 
 
 10.times do
-  url = "https://source.unsplash.com/random/500x500"
+  url = "https://source.unsplash.com/random/500x500/?crying,person"
   mourner = Mourner.new(
     email: Faker::Internet.email,
     password: Faker::Internet.password,

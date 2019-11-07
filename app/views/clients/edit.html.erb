@@ -11,20 +11,45 @@
 <%= @client.last_name  %> Update: <%= f.input :last_name %>
 </li>
 <li>
-<%= @client.location  %> Update: <%= f.input :location %>
-</li>
-<li>
 <%= @client.account_number  %> Update: <%= f.input :account_number %>
 </li>
 </ul>
   <%= f.button :submit %>
 <% end %>
-
+<div class="prestations">
 <% @prestations.each do |prestation| %>
-  <p>'you should see some prestations here'</p>
-  <div class = "prestations">
-  <%= prestation.id %>
+  <p>Find your prestations requests to our mourner(s) below</p>
+  <div class = "prestation">
+    <div class="mourner_info">
+  <%= prestation.mourner.first_name %>
+  <%= prestation.mourner.last_name %>
+  <%= prestation.mourner.email %>
+  <%= prestation.mourner.rating %>
+  <%= prestation.mourner.age %>
+  <%= prestation.mourner.years_of_expertise %>
+  <%= prestation.mourner.mourning_intensity %>
+  <%= prestation.mourner.price_range %>
+  <%= cl_image_tag prestation.mourner.photo %>
+    </div>
+    <div class="prestation_info">
+      <%= prestation.location %>
+      <%= prestation.date %>
+      <%= prestation.price %>
+      <%= prestation.intensity %>
+      <% case prestation.status %>
+      <% when 0 %>
+      <%= "pending" %>
+      <% when 1 %>
+      <%= "done" %>
+      <% when 2 %>
+      <%= "canceled" %>
+      <% end %>
+    </div>
+    <div class="btn btn-secondary">
+      <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
+    </div>
   </div>
+</div>
 <% end %>
 
 <%= link_to "See the available mourners", mourners_path %>

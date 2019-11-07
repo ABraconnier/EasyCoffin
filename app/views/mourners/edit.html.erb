@@ -31,3 +31,33 @@
 </div>
 
 
+<div class="prestations">
+<% @mourner.prestations.each do |prestation| %>
+  <p>Find your prestations coming from clients below</p>
+  <div class = "prestation">
+    <div class="client_info">
+  <%= prestation.client.first_name %>
+  <%= prestation.client.last_name %>
+  <%= prestation.client.email %>
+  <%= prestation.client.location %>
+    </div>
+    <div class="prestation_info">
+  <%= prestation.location %>
+  <%= prestation.date %>
+  <%= prestation.price %>
+  <%= prestation.intensity %>
+    </div>
+    <div class="buttons">
+      <% case prestation.status %>
+      <% when 0 %>
+      <%= "pending" %>
+      <% when 1 %>
+      <%= "done" %>
+      <% when 2 %>
+      <%= "canceled" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+

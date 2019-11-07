@@ -14,6 +14,14 @@ class PrestationsController < ApplicationController
   end
 
   def destroy
+    @prestation = Prestation.find(params[:id])
+    mourner = Mourner.find(params[:mourner_id])
+    client = current_client
+    @prestation.mourner = mourner
+    @prestation.client = current_client
+    authorize @prestation
+    @prestation.destroy
+    redirect_to edit_client_path(current_client)
   end
 
   private
