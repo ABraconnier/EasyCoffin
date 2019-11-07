@@ -24,47 +24,36 @@
       </div>
       <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Reservation History</h1>
       <div class="card">
-​
-        <div style="text-align: center">
-        <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
-        <p>No reservation done yet...</p>
-        <%= link_to 'Hire a professional mourner !', mourners_path, class: "btn btn-secondary btn-lg", id: "client-btn" %>
-​
-        <div class="prestations">
-        <% @prestations.each do |prestation| %>
-        <p>Find your prestations requests to our mourner(s) below</p>
-          <div class = "prestation">
-            <div class="mourner_info">
-              <%= prestation.mourner.first_name %>
-              <%= prestation.mourner.last_name %>
-              <%= prestation.mourner.email %>
-              <%= prestation.mourner.rating %>
-              <%= prestation.mourner.age %>
-              <%= prestation.mourner.years_of_expertise %>
-              <%= prestation.mourner.mourning_intensity %>
-              <%= prestation.mourner.price_range %>
-              <%= cl_image_tag prestation.mourner.photo %>
+​        <% if current_client.prestations.empty? %>
+          <div style="text-align: center">
+          <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
+          <p>No reservation done yet...</p>
+          <%= link_to 'Hire a professional mourner !', mourners_path, class: "btn btn-secondary btn-lg", id: "client-btn" %>
+​        <% else %>
+          <div class="prestations">
+            <p class="text-center">Keep an eye below on the different requests for services made to our mourners...</p>
+            <% @prestations.each do |prestation| %>
+            <div class="notification mt-3">
+              <%= cl_image_tag prestation.mourner.photo, class: "avatar-large" %>
+                <div class="notification-content">
+                  <p><small><%= prestation.date %></small></p>
+                  <p><strong><%= prestation.mourner.first_name %></strong>
+                  <strong><%= prestation.mourner.last_name %></strong></p>
+                  <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.mourner.email %> | <i class="fas fa-coins"></i> <%= prestation.price %></small></p>
+                  <p><%= prestation.mourner.first_name %> looks forward to meeting you in <%= prestation.location %> !</p>
+                </div>
+                <div class="notification-actions">
+                  <%= link_to mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Do you really want to cancel it?"} do %>
+                    <i class="fas fa-trash"></i> Cancel
+                  <% end %>
+                </div>
             </div>
-            <div class="prestation_info">
-              <%= prestation.location %>
-              <%= prestation.date %>
-              <%= prestation.price %>
-              <%= prestation.intensity %>
-              <% case prestation.status %>
-              <% when 0 %>
-              <%= "pending" %>
-              <% when 1 %>
-              <%= "done" %>
-              <% when 2 %>
-              <%= "canceled" %>
-              <% end %>
-            </div>
-            <div class="btn btn-secondary">
-              <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
+            <% end %>
+            <div style="text-align: center">
+              <%= link_to "Another funeral coming?", mourners_path, class: "btn btn-secondary btn-lg mt-3", id: "client-btn" %>
             </div>
           </div>
         <% end %>
-        </div>
       </div>
     </div>
   </div>
