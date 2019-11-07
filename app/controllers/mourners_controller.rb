@@ -23,6 +23,7 @@ class MournersController < ApplicationController
   def edit
     @mourner = Mourner.find(params[:id])
     authorize @mourner if pundit_user == @mourner
+    @prestations = @mourner.prestations
   end
 
   def update
