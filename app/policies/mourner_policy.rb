@@ -14,6 +14,6 @@ class MournerPolicy < ApplicationPolicy
   end
 
   def index?
-    return true
+    user.is_a? Client
   end
 end

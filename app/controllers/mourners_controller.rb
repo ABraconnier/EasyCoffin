@@ -4,8 +4,12 @@ class MournersController < ApplicationController
   skip_before_action :authenticate_mourner!, only: [:index, :show]
 
   def index
-    @mourners = policy_scope(Mourner).order(created_at: :desc)
-    authorize @mourners if current_client
+    if params[:location].present? || params[:price].present?
+      @mourners = policy_scope(Mourner.search_by_price_and_location(params[:location] + ' ' + params[:price])).order(created_at: :desc)
+    else
+      @mourners = policy_scope(Mourner).order(created_at: :desc)
+    end
+    authorize @mourners
   end
 
   def show
