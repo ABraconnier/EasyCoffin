@@ -1,31 +1,42 @@
-<h1>THIS IS THE DASHBOARD CLIENT</h1>
-
-
-<p>This is your personnal information you can update.</p>
-<%= simple_form_for @client do |f| %>
-<ul>
-<li>
-<%= @client.first_name  %> Update: <%= f.input :first_name %>
-</li>
-<li>
-<%= @client.last_name  %> Update: <%= f.input :last_name %>
-</li>
-<li>
-<%= @client.location  %> Update: <%= f.input :location %>
-</li>
-<li>
-<%= @client.account_number  %> Update: <%= f.input :account_number %>
-</li>
-</ul>
-  <%= f.button :submit %>
-<% end %>
-
-<% @prestations.each do |prestation| %>
-  <p>'you should see some prestations here'</p>
-  <div class = "prestations">
-  <%= prestation.id %>
+<div class="container">
+  <h1 class="mt-3 ml-3" id="h2-banner">Your Client Dashboard</h1>
+  <div class="row">
+    <div class="col-3 mt-3 card">
+      <div class="text-center">
+        <h2>Your profile</h2>
+        <p>Update your data if needed</p>
+      </div>
+    <%= simple_form_for @client do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :location %>
+    <%= f.input :account_number %>
+      <div class="text-center">
+        <%= f.button :submit, "Update profile", class: "btn btn-secondary btn-lg", id: "client-btn" %>
+      </div>
+    <% end %>
+    </div>
+    <div class="col-9 mt-3">
+      <div class="card-category">
+        <div class="d-flex align-items-end">
+          <%= link_to 'See all mourners available', mourners_path, style: "margin-bottom: 10px;", id: "client-link" %>
+        </div>
+        <div class="card-background" style="background-image: url('<%= image_path("mourning_ladies.svg") %>')" ></div>
+      </div>
+      <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Reservation History</h1>
+      <div class="card">
+        <div style="text-align: center">
+        <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
+        <p>No reservation done yet...</p>
+        <%= link_to 'Hire a professional mourner !', mourners_path, class: "btn btn-secondary btn-lg", id: "client-btn" %>
+        </div>
+        <% @prestations.each do |prestation| %>
+          <p>'you should see some prestations here'</p>
+          <div class = "prestations">
+          <%= prestation.id %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= link_to "See the available mourners", mourners_path %>
-
+</div>
