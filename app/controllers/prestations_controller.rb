@@ -29,7 +29,7 @@ class PrestationsController < ApplicationController
     if @prestation.destroy
       respond_to do |format|
         format.html { redirect_to edit_client_path(current_client) } if current_client
-        format.html { redirect_to edit_mourner_path(current_mourner) } if current_client
+        format.html { redirect_to edit_mourner_path(current_mourner) } if current_mourner
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
     else

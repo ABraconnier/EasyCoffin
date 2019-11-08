@@ -52,7 +52,7 @@
                   <% case prestation.status %>
                   <% when 0 %>
                     <div class="btn mt-2" style="background-color: #75d56c; color: white;">
-                      <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "Are you sure you want to cry?"}, remote: :true %>
+                      <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "Are you sure you want to cry?"}%>
                     </div>
                     <div class="btn mt-2" style="background-color: #DC3545">
                       <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Are you sure you want to cancel the request?"} %>
