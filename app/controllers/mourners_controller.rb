@@ -17,7 +17,7 @@ class MournersController < ApplicationController
         lat: mourner.latitude,
         lng: mourner.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { mourner: mourner }),
-        image_url: helpers.asset_url('marker_mourner')
+        image_url: helpers.asset_url('marker_mourner.png')
       }
     end
   end
