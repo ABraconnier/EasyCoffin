@@ -14,7 +14,7 @@ class MournersController < ApplicationController
     authorize @mourners if @mourners != []
     @mourners_geo = Mourner.geocoded #returns flats with coordinates
 
-    @markers = @mourners.map do |mourner|
+    @markers = @mourners_geo.map do |mourner|
       {
         lat: mourner.latitude,
         lng: mourner.longitude

@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
   const fitMapToMarkers = (map, markers) => {
@@ -21,9 +20,7 @@ const initMapbox = () => {
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
   });
+}
 };
-
 export { initMapbox };
-import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
-import { initMapbox } from '../plugins/init_mapbox';
-initMapbox();
+
