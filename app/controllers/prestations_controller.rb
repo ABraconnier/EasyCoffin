@@ -28,12 +28,14 @@ class PrestationsController < ApplicationController
     authorize @prestation
     if @prestation.destroy
       respond_to do |format|
-        format.html { redirect_to edit_client_path(current_client) }
+        format.html { redirect_to edit_client_path(current_client) } if current_client
+        format.html { redirect_to edit_mourner_path(current_mourner) } if current_client
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
     else
       respond_to do |format|
-        format.html { render 'clients/edit' }
+        format.html { render 'clients/edit' } if current_client
+        format.html { render 'mourners/edit' } if current_mourner
         format.js  # <-- idem
       end
     end

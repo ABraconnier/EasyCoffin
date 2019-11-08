@@ -59,6 +59,6 @@ class Mourners::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range, :profile_picture])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :account_number, :age, :years_of_expertise, :mourning_intensity, :price_range, :profile_picture, :photo])
   end
 end

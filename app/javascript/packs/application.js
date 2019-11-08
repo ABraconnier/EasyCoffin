@@ -8,6 +8,5 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 initSlick();
 AOS.init();
-console.log('test');
 initMapbox();
 initAutocomplete();

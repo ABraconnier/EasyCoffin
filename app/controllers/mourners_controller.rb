@@ -4,11 +4,11 @@ class MournersController < ApplicationController
   skip_before_action :authenticate_mourner!, only: [:index, :show]
 
   def index
-    @mourners = policy_scope(Mourner).order(created_at: :desc)
+    @mourners = policy_scope(Mourner).order(mourning_intensity: :desc)
     if params[:price].present? || params[:location].present?
-      params[:price] = (0..params[:price].to_i).to_a.join(" ")
-      @mourners = @mourners.search_by_price(params[:price]) if params[:price].present?
-      @mourners = @mourners.near(params[:location], 300) if params[:location].present?
+      params[:price] = (0..params[:price].to_i).to_a.join(" ") unless params[:price] == ""
+      @mourners = @mourners.search_by_price(params[:price]) if params[:price] != ""
+      @mourners = @mourners.near(params[:location], 300) if params[:location] != ""
     end
     authorize @mourners if @mourners != []
     @mourners_geo = @mourners.geocoded

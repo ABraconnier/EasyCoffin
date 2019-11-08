@@ -18,7 +18,7 @@ class PrestationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.client == user
+    record.client == user || record.mourner == user
   end
 
   def update?
