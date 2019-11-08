@@ -60,12 +60,12 @@
                 <%= prestation.intensity %>
                 <% case prestation.status %>
                 <% when 0 %>
-                <%= "pending" %>
+                <%= "new request from client, please accept it or cancel it" %>
                 <% when 1 %>
-                <%= "done" %>
+                <%= "meet your client at funerals" %>
                 <% end %>
               </div>
-              <% if prestation.status == "pending"%>
+              <% if prestation.status == 0%>
                 <div class="btn btn-secondary">
                   <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
                 </div>
