@@ -18,7 +18,9 @@
     <div class="col-9 mt-3">
       <div class="card-category">
         <div class="d-flex align-items-end">
-          <%= link_to 'See all mourners available', mourners_path, style: "margin-bottom: 10px;", id: "client-link" %>
+          <%= link_to mourners_path, style: "margin-bottom: 10px;", id: "client-link" do %>
+            <i class="fas fa-angle-right"></i> See all mourners available
+          <% end %>
         </div>
         <div class="card-background" style="background-image: url('<%= image_path("mourning_ladies.svg") %>')" ></div>
       </div>
