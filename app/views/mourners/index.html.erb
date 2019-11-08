@@ -12,8 +12,6 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 </div>
-
-
 <div class="active-purple-4 mb-4">
   <%= form_tag mourners_path, method: :get do %>
     <%= label_tag(:location, "City(in a 300km range): ") %>

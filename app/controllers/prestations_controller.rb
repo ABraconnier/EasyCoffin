@@ -8,8 +8,12 @@ class PrestationsController < ApplicationController
     @prestation.price = mourner.price_range
     @prestation.intensity = mourner.mourning_intensity
     authorize @prestation
-    @prestation.save
-    redirect_to edit_client_path(current_client)
+    if mourner.prestations.none? { |prestation| prestation.date == @prestation.date}
+      @prestation.save
+      redirect_to edit_client_path(current_client)
+    else
+      redirect_to mourners_path, :alert => "This mourner is not avalaible on this date"
+    end
   end
 
   def show
