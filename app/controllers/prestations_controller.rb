@@ -26,8 +26,17 @@ class PrestationsController < ApplicationController
     @prestation.mourner = mourner
     @prestation.client = current_client
     authorize @prestation
-    @prestation.destroy
-    redirect_to edit_client_path(current_client)
+    if @prestation.destroy
+      respond_to do |format|
+        format.html { redirect_to edit_client_path(current_client) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'clients/edit' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def update
