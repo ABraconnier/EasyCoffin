@@ -35,32 +35,34 @@
           <div class="prestations">
             <p class="text-center">Keep an eye below on the different requests for services made to our mourners...</p>
             <% @prestations.each do |prestation| %>
-            <div class="notification mt-3">
-              <%= cl_image_tag prestation.mourner.photo, class: "avatar-large" %>
-                <div class="notification-content">
-                  <p><small><%= prestation.date %></small></p>
-                  <p><strong><%= prestation.mourner.first_name %></strong>
-                  <strong><%= prestation.mourner.last_name %></strong></p>
-                  <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.mourner.email %> | <i class="fas fa-coins"></i> <%= prestation.price %></small></p>
-                  <p><%= prestation.mourner.first_name %>
-                    looks forward to meeting you in <%= prestation.location %> !
-                    <% case prestation.status %>
-                    <% when 0 %>
-                    <%= "new request from client, please accept it or cancel it" %>
-                    <% when 1 %>
-                    <%= "meet your client at funerals" %>
+            <div data-prestation-id="<%= prestation.id %>">
+              <div class="notification mt-3">
+                <%= cl_image_tag prestation.mourner.photo, class: "avatar-large" %>
+                  <div class="notification-content">
+                    <p><small><%= prestation.date %></small></p>
+                    <p><strong><%= prestation.mourner.first_name %></strong>
+                    <strong><%= prestation.mourner.last_name %></strong></p>
+                    <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.mourner.email %> | <i class="fas fa-coins"></i> <%= prestation.price %></small></p>
+                    <p><%= prestation.mourner.first_name %>
+                      looks forward to meeting you in <%= prestation.location %> !
+                      <% case prestation.status %>
+                      <% when 0 %>
+                      <%= "new request from client, please accept it or cancel it" %>
+                      <% when 1 %>
+                      <%= "meet your client at funerals" %>
+                      <% end %>
+                      </div>
+                      <% if prestation.status == 0 %>
+                      <div class="notification-actions">
+                    <%= link_to mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Do you really want to cancel it?"}, remote: :true do %>
+                      <i class="fas fa-trash"></i> Cancel
+                      <% end %>
+                      </div>
                     <% end %>
-                    </div>
-                    <% if prestation.status == 0 %>
-                    <div class="notification-actions">
-                  <%= link_to mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Do you really want to cancel it?"} do %>
-                    <i class="fas fa-trash"></i> Cancel
-                    <% end %>
-                    </div>
-                  <% end %>
-                <div>
-                  <p><%= link_to "see mourner profile", mourner_path(prestation.mourner)%></p>
-                </div>
+                  <div>
+                    <p><%= link_to "see mourner profile", mourner_path(prestation.mourner)%></p>
+                  </div>
+              </div>
             </div>
             <% end %>
             <div style="text-align: center">
