@@ -22,10 +22,14 @@
       </div>
     <% end %>
     </div>
+
     <div class="col-9 mt-3">
       <div class="flash flash-success alert-dismissible fade show" role="alert">
-        <span>👋 Welcome back, <strong><%= current_mourner.first_name %></strong> !</span>
+        <div class="row">
+          <span>👋 Good to see you, <strong><%= current_mourner.first_name %></strong> !</span>
+        </div>
       </div>
+      <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Request History</h1>
       <div class="card mt-3">
 ​        <% if current_mourner.prestations.empty? %>
           <div style="text-align: center">
@@ -33,45 +37,32 @@
           <p>No reservation done yet...</p> <strong> Go kill someone and start earning money 💰!</strong>
 ​        <% else %>
           <div class="prestations">
-          <% @prestations.each do |prestation| %>
-          <p>Find your prestations requests from client(s) below</p>
-            <div class = "prestation">
-              <div class="mourner_info">
-                <%= prestation.mourner.first_name %>
-                <%= prestation.mourner.last_name %>
-                <%= prestation.mourner.email %>
-                <%= prestation.mourner.rating %>
-                <%= prestation.mourner.age %>
-                <%= prestation.mourner.account_number %>
-                <%= prestation.mourner.years_of_expertise %>
-                <%= prestation.mourner.mourning_intensity %>
-                <%= prestation.mourner.price_range %>
-                <%= cl_image_tag prestation.mourner.photo %>
-              </div>
-              <div class="prestation_info">
-                <%= prestation.location %>
-                <%= prestation.date %>
-                <%= prestation.price %>
-                <%= prestation.intensity %>
-                <% case prestation.status %>
-                <% when 0 %>
-                <%= "new request from client, please accept it or cancel it" %>
-                <% when 1 %>
-                <%= "meet your client at funerals" %>
-                <% end %>
-              </div>
-              <% if prestation.status == 0%>
-                <div class="btn btn-secondary">
-                  <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
-                </div>
-                <div class="btn btn-secondary">
-                  <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "You Sure you want to cry?"}, remote: :true %>
-                </div>
-              <% else %>
-                  You can't cancel the prestation anymore as you accepted it
-              <% end %>
+            <div style="text-align: center">
+              <img src="https://media.giphy.com/media/2wTclyW12Y9ORW8WEL/giphy.gif" style="width: 20%">
+              <p><strong> Congratulations ! </strong>It seems you have some reservations!</p>
             </div>
-          <% end %>
+          <% @prestations.each do |prestation| %>
+            <div class="notification mt-3">
+              <div class="notification-content">
+                <p><small><%= prestation.date %></small></p>
+                <p><strong><%= prestation.client.first_name %></strong>
+                <strong><%= prestation.client.last_name %></strong></p>
+                <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.client.email %> | <i class="fas fa-coins"></i> <%= prestation.price %> €| <i class="far fa-sad-tear"></i> Mourning intensity: <% prestation.intensity %></small></p>
+                <p><%= prestation.client.first_name %> looks forward to meeting you in <%= prestation.location %> !</p>
+                  <% case prestation.status %>
+                  <% when 0 %>
+                    <div class="btn mt-2" style="background-color: #75d56c; color: white;">
+                      <%= link_to "Accept the prestation", mourner_prestation_path(prestation.mourner, prestation), method: :patch, :data => {:confirm => "Are you sure you want to cry?"}, remote: :true %>
+                    </div>
+                    <div class="btn mt-2" style="background-color: #DC3545">
+                      <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Are you sure you want to cancel the request?"} %>
+                    </div>
+                  <% when 1 %>
+                    <span class="badge badge-success badge-accepted">Accepted</span>
+                  <% end %>
+                  </div>
+                </div>
+            </div>
           </div>
         <% end %>
       </div>
