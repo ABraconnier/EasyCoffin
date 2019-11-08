@@ -8,6 +8,8 @@
 
 30.times do
   url = "https://source.unsplash.com/random/500x500/?crying,person"
+  url_places = "https://geo.api.gouv.fr/communes"
+  json_file = JSON.parse(open(url_places).read)
   mourner = Mourner.new(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
@@ -19,7 +21,7 @@
     years_of_expertise: (1..25).to_a.sample,
     mourning_intensity: (0..5).to_a.sample,
     price_range: (20..55).to_a.sample,
-    location: Faker::Address.country
+    location: json_file.sample['nom']
     )
   mourner.remote_photo_url = url
   mourner.save
