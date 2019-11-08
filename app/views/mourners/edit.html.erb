@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-3 mt-3 card">
       <div class="text-center">
+        <%= cl_image_tag @mourner.photo, class: "avatar-large" %>
         <h2>Your profile</h2>
         <p>Update your data if needed</p>
       </div>
@@ -12,7 +13,6 @@
     <%= f.input :location %>
     <%= f.input :account_number %>
     <%= f.input :age %>
-    <%= f.input :account_number %>
     <%= f.input :years_of_expertise %>
     <%= f.input :mourning_intensity %>
     <%= f.input :price_range %>
@@ -22,13 +22,19 @@
     <% end %>
     </div>
     <div class="col-9 mt-3">
-      <div class="card-category">
-      <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Reservation History</h1>
-      <div class="card">
+      <div class="row">
+        <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+          <span>👋 Welcome back, <strong><%= current_mourner.first_name %></strong> !</span>
+          <a data-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card mt-3">
 ​        <% if current_mourner.prestations.empty? %>
           <div style="text-align: center">
-          <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
-          <p>No reservation done yet...</p> <strong> Go kill someone!</strong>
+          <img src="https://media.giphy.com/media/348lk5QNAuOGsxndma/giphy.gif" style="width: 30%">
+          <p>No reservation done yet...</p> <strong> Go kill someone and start earning money 💰!</strong>
 ​        <% else %>
           <div class="prestations">
           <% @prestations.each do |prestation| %>
