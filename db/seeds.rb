@@ -5,14 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-client = Client.new()
-client.save
-mourner = Mourner.new()
-mourner.save
-Prestation.create!(review: 1, location: "brussels", price: 3, client: client, mourner: mourner)
 
-
-10.times do
+30.times do
   url = "https://source.unsplash.com/random/500x500/?crying,person"
   mourner = Mourner.new(
     email: Faker::Internet.email,
@@ -24,7 +18,8 @@ Prestation.create!(review: 1, location: "brussels", price: 3, client: client, mo
     age: (25..55).to_a.sample,
     years_of_expertise: (1..25).to_a.sample,
     mourning_intensity: (0..5).to_a.sample,
-    price_range: (20..55).to_a.sample
+    price_range: (20..55).to_a.sample,
+    location: Faker::Address.country
     )
   mourner.remote_photo_url = url
   mourner.save
