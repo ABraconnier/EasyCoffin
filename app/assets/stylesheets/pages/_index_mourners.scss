@@ -46,3 +46,12 @@ _index_mourners.scss
   margin-top: 8px;
   margin-left: 10px;
 }
+
+.mapboxgl-popup {
+  max-width: 600px;
+}
+​
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}

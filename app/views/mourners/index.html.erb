@@ -4,6 +4,15 @@
       <div class="row justify-content-center">
       <h1>Here are the best mourners ever !</h1>
       </div>
+      <div class="d-flex justify-content-center"><div
+  id="map"
+  style="width: 50%;
+  height: 500px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+</div>
+
 
 <div class="active-purple-4 mb-4">
   <%= form_tag mourners_path, method: :get do %>
@@ -41,12 +50,3 @@
     <% end %>
   </div>
 </div>
-
-<div
-  id="map"
-  style="width: 25%;
-  height: 300px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
