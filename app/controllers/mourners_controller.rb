@@ -4,16 +4,14 @@ class MournersController < ApplicationController
   skip_before_action :authenticate_mourner!, only: [:index, :show]
 
   def index
-    @mourners = policy_scope(Mourner).order(created_at: :desc) unless params[:price].present? || params[:location].present?
-    params[:price] = (0..params[:price].to_i).to_a.join(" ") if params[:price].present?
-    mourners_price = policy_scope(Mourner).search_by_price(params[:price]) if params[:price].present?
-    mourners_location = policy_scope(Mourner).search_by_location(params[:location]).order(created_at: :desc) if params[:location].present?
-    @mourners = mourners_price + mourners_location if mourners_price.present? && mourners_location.present?
-    @mourners = mourners_price if mourners_price.present?
-    @mourners = mourners_location if mourners_location.present?
+    @mourners = policy_scope(Mourner).order(created_at: :desc)
+    if params[:price].present? || params[:location].present?
+      params[:price] = (0..params[:price].to_i).to_a.join(" ")
+      @mourners = @mourners.search_by_price(params[:price]) if params[:price].present?
+      @mourners = @mourners.near(params[:location], 300) if params[:location].present?
+    end
     authorize @mourners if @mourners != []
-    @mourners_geo = Mourner.geocoded
-
+    @mourners_geo = @mourners.geocoded
     @markers = @mourners_geo.map do |mourner|
       {
         lat: mourner.latitude,

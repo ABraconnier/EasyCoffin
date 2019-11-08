@@ -1,7 +1,7 @@
 <h1>Here are the best mourners ever !</h1>
 
 <%= form_tag mourners_path, method: :get do %>
-  <%= label_tag(:location, "Location:") %>
+  <%= label_tag(:location, "City(in a 300km range): ") %>
   <%= text_field_tag :location,
     params[:location],
     class: "form-control"
