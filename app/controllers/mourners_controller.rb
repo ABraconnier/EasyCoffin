@@ -36,7 +36,7 @@ class MournersController < ApplicationController
 
   def update
     @mourner = Mourner.find(params[:id])
-    authorize @mourner if user == @mourner
+    authorize @mourner if pundit_user == @mourner
     @mourner.update(mourners_params)
     redirect_to edit_mourner_path(@mourner)
   end
