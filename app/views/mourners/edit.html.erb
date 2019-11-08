@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-3 mt-3 card">
       <div class="text-center">
+        <%= cl_image_tag @mourner.photo, class: "avatar-large" %>
         <h2>Your profile</h2>
         <p>Update your data if needed</p>
       </div>
@@ -12,23 +13,24 @@
     <%= f.input :location %>
     <%= f.input :account_number %>
     <%= f.input :age %>
-    <%= f.input :account_number %>
     <%= f.input :years_of_expertise %>
     <%= f.input :mourning_intensity %>
     <%= f.input :price_range %>
+    <%= f.input :photo %>
       <div class="text-center">
         <%= f.button :submit, "Update profile", class: "btn btn-secondary btn-lg", id: "mourner-btn" %>
       </div>
     <% end %>
     </div>
     <div class="col-9 mt-3">
-      <div class="card-category">
-      <h1 class="mt-4" id="h2-banner" style="font-size: 35px">Reservation History</h1>
-      <div class="card">
+      <div class="flash flash-success alert-dismissible fade show" role="alert">
+        <span>👋 Welcome back, <strong><%= current_mourner.first_name %></strong> !</span>
+      </div>
+      <div class="card mt-3">
 ​        <% if current_mourner.prestations.empty? %>
           <div style="text-align: center">
-          <img src="https://media.giphy.com/media/3o7buagJzUFQWpb2PC/giphy.gif" style="width: 30%">
-          <p>No reservation done yet...</p> <strong> Go kill someone!</strong>
+          <img src="https://media.giphy.com/media/348lk5QNAuOGsxndma/giphy.gif" style="width: 30%">
+          <p>No reservation done yet...</p> <strong> Go kill someone and start earning money 💰!</strong>
 ​        <% else %>
           <div class="prestations">
           <% @prestations.each do |prestation| %>
@@ -53,14 +55,12 @@
                 <%= prestation.intensity %>
                 <% case prestation.status %>
                 <% when 0 %>
-                <%= "pending" %>
+                <%= "new request from client, please accept it or cancel it" %>
                 <% when 1 %>
-                <%= "done" %>
-                <% when 2 %>
-                <%= "canceled" %>
+                <%= "meet your client at funerals" %>
                 <% end %>
               </div>
-              <% if prestation.status == "pending"%>
+              <% if prestation.status == 0%>
                 <div class="btn btn-secondary">
                   <%= link_to "Cancel", mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "You Sure?"} %>
                 </div>
