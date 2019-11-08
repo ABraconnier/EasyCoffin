@@ -42,12 +42,15 @@
                   <p><strong><%= prestation.mourner.first_name %></strong>
                   <strong><%= prestation.mourner.last_name %></strong></p>
                   <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.mourner.email %> | <i class="fas fa-coins"></i> <%= prestation.price %></small></p>
-                  <p><%= prestation.mourner.first_name %> looks forward to meeting you in <%= prestation.location %> !</p>
+                  <p><%= prestation.mourner.first_name %> looks forward to meeting you in <%= prestation.location %> !  <%= prestation.status %></p>
                 </div>
                 <div class="notification-actions">
                   <%= link_to mourner_prestation_path(prestation.mourner, prestation), method: :delete, :data => {:confirm => "Do you really want to cancel it?"} do %>
                     <i class="fas fa-trash"></i> Cancel
                   <% end %>
+                </div>
+                <div>
+                  <p><%= link_to "see mourner profile", mourner_path(prestation.mourner)%></p>
                 </div>
             </div>
             <% end %>
