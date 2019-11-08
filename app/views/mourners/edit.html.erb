@@ -5,7 +5,7 @@
       <div class="text-center">
         <%= cl_image_tag @mourner.photo, class: "avatar-large" %>
         <h2>Your profile</h2>
-        <p>Please update your data and fill in more info about yourself if you want to get clients!</p>
+        <p>Please update your data and fill in more info about you!</p>
       </div>
     <%= simple_form_for @mourner do |f| %>
     <%= f.input :first_name %>
@@ -47,7 +47,7 @@
                 <p><small><%= prestation.date %></small></p>
                 <p><strong><%= prestation.client.first_name %></strong>
                 <strong><%= prestation.client.last_name %></strong></p>
-                <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.client.email %> | <i class="fas fa-coins"></i> <%= prestation.price %> €| <i class="far fa-sad-tear"></i> Mourning intensity: <% prestation.intensity %></small></p>
+                <p><small><i class="fas fa-map-marker-alt"></i> <%= prestation.location %> | <i class="far fa-envelope"></i> <%= prestation.client.email %> | <i class="fas fa-coins"></i> <%= prestation.price %> €</small></p>
                 <p><%= prestation.client.first_name %> looks forward to meeting you in <%= prestation.location %> !</p>
                   <% case prestation.status %>
                   <% when 0 %>
