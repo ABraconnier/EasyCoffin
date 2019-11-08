@@ -1,0 +1,52 @@
+.Background_solo_mourner {
+  overflow: hidden;
+}
+
+.Background_solo_mourner > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
+}
+
+.Background_solo_mourner h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.Background_solo_mourner p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.Background_solo_mourner .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+#paolooser {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
+}
+
+#paolozer {
+  position: absolute;
+  margin-top: 120px;
+  margin-left: 50px;
+}
